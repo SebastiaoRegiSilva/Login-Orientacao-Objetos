@@ -1,0 +1,12 @@
+Utilizando o exercício (Projeto) TelaLogin, crie uma classe chamada Usuario, com os atributos:
+- usuario
+- senha
+- nome
+-tipoUsuario
+
+E os métodos:
++ validarAcesso(usuario, senha)
+
+Colocar no método validarAcesso a parte de criptografia e comparação do usuário e senha já desenvolvido
+
+Aplicar a utilização da classe na tela de login.

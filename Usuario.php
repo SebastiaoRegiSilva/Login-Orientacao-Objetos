@@ -33,52 +33,50 @@
             $this->usuario =$usuario;
         }
 
-        public function setUsuario($senha)
+        public function setSenha($senha)
         {
             $this->senha =$senha;
         }
 
-        public function setUsuario($nome)
+        public function setNome($nome)
         {
             $this->nome =$nome;
         }
 
-        public function setUsuario($tipoUsuario)
+        public function setTipoUsuario($tipoUsuario)
         {
             $this->tipoUsuario =$tipoUsuario;
         }
         
         // Construtor com parâmetros.
-        public function __construct($usuario, $senha, $nome ,$tipoUsuario)
+        public function __construct($usuario, $senha /*, $nome ,$tipoUsuario*/)
         {
             $this->usuario = $usuario;
             $this->senha = $senha;
-            $this->nome = $nome;
-            $this->tipoUsuario = $tipoUsuario;
+            //$this->nome = $nome;
+            //$this->tipoUsuario = $tipoUsuario;
         }
         
         // Demais funções da classe.
-        public function ValidateAccess($usuario, $senha)
-        {
-            $usuario = $_POST['username'];
-            $passwordMD5 = md5($_POST['pass']);
-            $passWordEncript = crypt($senhaMD5, 'etec');
 
-            if(isset($_POST['btnLogin']))
+        public function ValidateAccess($usuario,  $senha)
+        {
+            ini_set('display_errors', 0 );
+                error_reporting(0);
+
+            $senhaUser = crypt(md5('12'),'etec');
+            $passwordMD5 = md5($senha);
+            $passwordEncript = crypt($passwordMD5, 'etec');
+
+            if($usuario == 'juliana' && $senhaUser == $passwordEncript)
             {
-                $senhaUser = crypt(md5($_POST['pass']), 'etec');
-                if($_POST['username'] == $usuario && $senhaUser == $senhaEncript)
-                {
-                    $_SESSION['usuario'] = $_POST['username'];
-                    
-                    // Header ele faz o redirecionamento pra outra página.
-                    header('Location: principal.php');
-                }
-                else
-                {
-                    header('Location: index.php?erro=1');
-                }
+                $_SESSION['usuario'] = $usuario;
+                
+                // Header ele faz o redirecionamento pra outra página.
+                header('Location: principal.php');
             }
+            else
+                header('Location: index.php?erro=User or Passaword Falid');
         }
     }
 ?>

@@ -1,10 +1,10 @@
 <?php
     class Usuario
     {
-        private String $usuario;
-        private String $senha;
-        private String $nome;
-        private String $tipoUsuario;
+        private $usuario;
+        private $senha;
+        private $nome;
+        private $tipoUsuario;
     
         // Usamos get para obter informações. Esse tipo de método sempre retorna um valor.
         public function getUsuario()
